@@ -31,11 +31,11 @@ function ListMaker1000Start () {
   // END DATA MODEL
 
   // CUSTOM COMPONENT FOR DISPLAYING A SINGLE LIST ITEM
-  function TodoListItem({item}) {
+  function TodoListItem({listItem}) {
     return (
       <View style={styles.listItemView}>
         <View style={styles.li1}>
-          <Text style={styles.listItemText}>{item.text}</Text>
+          <Text style={styles.listItemText}>{listItem.text}</Text>
         </View>
         <TouchableOpacity 
           style={styles.li2}  
@@ -74,7 +74,7 @@ function ListMaker1000Start () {
           data={todos}
           renderItem={({item})=>{
             return (
-              <TodoListItem item={item}/>
+              <TodoListItem listItem={item}/>
             );
           }}
         />
@@ -92,13 +92,13 @@ function ListMaker1000Start () {
       {/* OVERLAY COMPONENT: SHOWN ON TOP WHEN visible==true */}
       <Overlay 
         isVisible={overlayVisible} 
-        onBackdropPress={()=>setOverlayVisible(false)}
+        onBackdropPress={() => setOverlayVisible(false)}
         overlayStyle={styles.overlayView}  
       >
         <Input
           placeholder='New Todo Item'
           value={inputText}
-          onChangeText={(newText)=>setInputText(newText)}
+          onChangeText={(newText) => setInputText(newText)}
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-around', width:'80%'}}>
           <Button
